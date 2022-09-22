@@ -36,9 +36,6 @@ nav ul li:nth-child(1) {
   border-left: 1px solid #fff;
 }
 
-nav ul li:nth-last-child(1) {
-}
-
 ul.drop-down-child {
   display: block;
   position: absolute;

@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { slider } from './slider';
+import sliderModule from './slider';
 
 const configs = {
   dropButtonClass: 'drop-down',
@@ -42,8 +42,8 @@ class DropDownMenu {
         const dropDownChild = document.createElement('ul');
         dropDownChild.classList.add('drop-down-child');
         dropDownChild.style = `
-          top: ${targetProps.top +
-            targetProps.height + 1}px;
+          top: ${targetProps.top
+            + targetProps.height + 1}px;
           left: ${targetProps.left}px;
           width: ${targetProps.width}px;
         `;
@@ -56,8 +56,8 @@ class DropDownMenu {
           () => {
             this.closeListener.call(this);
           },
-          this.dropdownInterval *
-            this.dropdownNames.length,
+          this.dropdownInterval
+            * this.dropdownNames.length,
         );
       },
       {
@@ -106,7 +106,7 @@ class DropDownMenu {
       }
 
       return false;
-    }
+    };
   }
 
   setMyInterval(action, time) {
@@ -141,4 +141,4 @@ class DropDownMenu {
 const menu = new DropDownMenu(configs);
 menu.run();
 
-
+sliderModule();

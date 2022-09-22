@@ -1,17 +1,9 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable operator-linebreak */
 /* eslint-disable max-classes-per-file */
-function getDimensions(target = '#slider-container') {
-  const sliderContainer = document.querySelector(target);
-  const slideScreenDimensions = {
-    left: sliderContainer.offsetLeft,
-    width: sliderContainer.offsetWidth,
-    right: sliderContainer.offsetLeft +
-      sliderContainer.offsetWidth,
-    height: sliderContainer.offsetHeight,
-  };
-  return slideScreenDimensions;
-}
+
+// TODO: icon of playing or pausing slideshow,
+// by default it's on pause when we're using arrows
 
 class RoundSliderButtons {
   constructor(
@@ -127,12 +119,6 @@ class Slider {
   buttonClick(event) {
     const id = event.target.getAttribute('data-id');
     this.newSlide(id);
-    
-  }
-
-  newSlide(id) {
-    this.clearAllIntervals();
-    this.slideOn(id);
     setTimeout(
       () => {
         this.clearAllIntervals();
@@ -140,6 +126,11 @@ class Slider {
       },
       5000,
     );
+  }
+
+  newSlide(id) {
+    this.clearAllIntervals();
+    this.slideOn(id);
   }
 
   addArrows() {
@@ -228,21 +219,25 @@ class Slider {
   }
 }
 
-document.addEventListener(
-  'DOMContentLoaded',
-  () => {
-    const slider = new Slider(
-      {
-        sliderContainer: '#slider-container',
-        slidesSliderClass: '#slider-slides',
-        slideClass: '.slide',
-        slideDuration: 5000,
-      },
-    );
-    slider.run();
+const sliderModule = function sliderModule() {
+  return document.addEventListener(
+    'DOMContentLoaded',
+    () => {
+      const slider = new Slider(
+        {
+          sliderContainer: '#slider-container',
+          slidesSliderClass: '#slider-slides',
+          slideClass: '.slide',
+          slideDuration: 5000,
+        },
+      );
+      slider.run();
 
-    window.buttonClick = slider.buttonClick.bind(slider);
-    window.nextSlide = slider.nextSlide.bind(slider);
-    window.previousSlide = slider.previousSlide.bind(slider);
-  },
-);
+      window.buttonClick = slider.buttonClick.bind(slider);
+      window.nextSlide = slider.nextSlide.bind(slider);
+      window.previousSlide = slider.previousSlide.bind(slider);
+    },
+  );
+};
+
+export default sliderModule;
