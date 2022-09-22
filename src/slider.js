@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
       slidesArray[current].style = `
           position: absolute;
           left: ${slideScreenDimensions.right + slideScreenDimensions.left}px;
-          opacity: 1;
+          opacity: 0;
       `;
 
       // STRANGE BEHAVIOR,
@@ -73,15 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       setTimeout(
         () => {
-          // slidesArray[next].style = `
-          //   position: absolute;
-          //   left: ${
-          //     slideScreenDimensions.left
-          //       - 2 * slideScreenDimensions.width
-          //   }px;
-          //   opacity: 1;
-          // `;
-
           slidesArray[previous].style = `
           position: absolute;
           left: ${-slideScreenDimensions.left - slideScreenDimensions.width}px;
@@ -91,8 +82,8 @@ document.addEventListener('DOMContentLoaded', () => {
           setTimeout(
             () => {
               slidesArray[previous].style = `
-            opacity: 0;
-          `;
+                opacity: 0;
+              `;
             },
             1000,
           );
