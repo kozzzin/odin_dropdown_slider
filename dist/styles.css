@@ -75,6 +75,7 @@ li[class="drop-down"]::after {
   aspect-ratio: 16/9;
   max-height: 60vh;
   margin: 0 auto;
+  position: relative;
 }
 
 #slider-slides {
@@ -85,6 +86,7 @@ li[class="drop-down"]::after {
   justify-content: left;
   justify-items: left;
   height: 100%;
+  transition: all 1s ease-in;
 }
 
 
@@ -100,7 +102,7 @@ li[class="drop-down"]::after {
   max-height: 60vh;
   transition: left 1s ease-in;
   box-sizing: border-box;
-  opacity: 0;
+  opacity: 1;
 }
 
 @supports not (aspect-ratio: 16 / 9) {
@@ -135,4 +137,63 @@ li[class="drop-down"]::after {
   max-width: 100%;
   transition: all 2s ease-in;
   overflow: hidden;
+}
+
+.mini-buttons {
+  display: grid;
+  position:absolute;
+  height: 30px;
+  bottom: 15px;
+  width: 50%;
+  margin-left: 25%;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  grid-auto-flow: column;
+  gap: 5px;
+}
+
+.button {
+  background: transparent;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #fff;
+  border-radius: 100%;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  cursor: pointer;
+}
+
+.button.active::after {
+  content: '';
+  display: block;
+  height: 12px;
+  width: 12px;
+  background-color: #fff;
+  border-radius: 100%;
+}
+
+.arrows {
+  display: block;
+  position: absolute;
+  top: 50%;
+  margin-top: -2rem;
+  font-size: 4rem;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+.arrows:hover {
+  margin-top: -2.5rem;
+  font-size: 5rem;
+}
+
+.arrow-left {
+  left: 20px;
+}
+
+.arrow-right {
+  right: 20px;
 }
