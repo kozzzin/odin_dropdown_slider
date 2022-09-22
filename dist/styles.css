@@ -1,0 +1,138 @@
+:root,
+body {
+ margin: 0;
+ padding: 0;
+ background-color: rgb(242, 242, 242);
+ font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+main {
+  padding: 25px;
+}
+
+nav ul {
+  list-style: none;
+  background-color: black;
+  color: #fff;
+  margin: 0;
+
+}
+
+nav ul li {
+  display: inline-block;
+  border-right: 1px solid #fff;
+  padding: 10px;
+  cursor: pointer;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+nav ul li:hover,
+ul.drop-down-child li:hover {
+  background-color: indigo;
+}
+
+nav ul li:nth-child(1) {
+  border-left: 1px solid #fff;
+}
+
+nav ul li:nth-last-child(1) {
+}
+
+ul.drop-down-child {
+  display: block;
+  position: absolute;
+  list-style: none;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  transition: all 0.5s ease-in-out;
+}
+
+ul.drop-down-child li {
+  cursor: pointer;
+  padding: 10px;
+  background-color: #000;
+  border-bottom: 1px solid #fff;
+  transition: all 0.3s ease-in-out;
+  border-right: 1px solid #fff;
+  box-sizing: border-box;
+}
+
+li[class="drop-down"]::after {
+  content: '▼';
+  display: inline-block;
+  font-size: 0.8rem;
+  margin-left: 3px;
+}
+
+
+#slider-container {
+  width:80vw;
+  max-width:1200px;
+  overflow: hidden;
+  aspect-ratio: 16/9;
+  max-height: 60vh;
+  margin: 0 auto;
+}
+
+#slider-slides {
+  overflow:hidden;
+  width:8000px;
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: left;
+  justify-items: left;
+  height: 100%;
+}
+
+
+.slide {
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  width: 80vw;
+  max-width: 1200px;
+  max-height: 60vh;
+  transition: left 1s ease-in;
+  box-sizing: border-box;
+  opacity: 0;
+}
+
+@supports not (aspect-ratio: 16 / 9) {
+  .slide::before {
+    float: left;
+    padding-top: 56.25%;
+    content: "";
+  }
+
+  .slide::after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+
+  #slider-container::before {
+    float: left;
+    padding-top: 56.25%;
+    content: "";
+  }
+
+  #slider-container::after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+
+    
+}
+
+.slide img {
+  max-width: 100%;
+  transition: all 2s ease-in;
+  overflow: hidden;
+}
